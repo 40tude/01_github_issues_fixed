@@ -6,7 +6,7 @@ J'ai un projet qui est synchronisé sur GitHub
 J'ajoute un fichier > 100 MB  
 J'oublie d'en tenir compte dans .gitignore  
 Je commit  
-Je synchronize  
+Je synchronise  
 
 ## PANIQUE! 😡
 
@@ -21,15 +21,16 @@ Je synchronize
 
 Il semble qu'il a rien poussé    
 J'édite ``.gitignore``  
-Je prends 2 captures d'écran que je met dans un dosier ``./assets``
-Je pouse et je synchronise
+Je prends 2 captures d'écran que je met dans un dosier ``./assets``  
+Je commit et je synchronise
 
 Même problème
 
 
 ``git reset --soft HEAD~2``
 
-Ca nous ramène à 2 commits en arrière
+Cela nous ramène à 2 commits en arrière dans le ``staging area``   
+* Sous VSCode on le voit dans l'interface graphique
 
 `git rm --cached .\data\large_file.csv`
 
@@ -89,7 +90,7 @@ Faire un
 ```powershell
 git reset --soft HEAD~2
 git rm --cached .\data\large_file.csv
-Edite .gitignore
+Edite le .gitignore
 Commit
 git push origin main --force
 ```
@@ -107,13 +108,13 @@ git push origin main --force
 
 J'ai un projet qui est synchronisé sur GitHub  
 J'ajoute un fichier > 100 MB  
-J'oublie d'en tenir compte dans .gitignore  
-Je commit  
+J'oublie d'en tenir compte dans ``.gitignore``  
+Je commit mais je ne fais **PAS** de synchronisation  
 
 Je réalise que j'ai un gros fichier...
 Comment revenir en arrière ?
 
-## PANIQUE!
+## PANIQUE! 😡
 
 ```powershell
 git reset --soft HEAD~1
@@ -123,9 +124,9 @@ git add .gitignore
 git commit -m "Remove large_file_2 and update .gitignore"
 git push origin main --force
 ```
-### Note ChatGPT
-Les modifications non committées dans ton espace de travail ne seront pas perdues avec un git reset --soft.   
-reset --soft : Ce mode préserve toutes tes modifications dans la staging area (index) et l’espace de travail.   
+### Note de ChatGPT :
+Les modifications non committées dans ton espace de travail ne seront pas perdues avec un ``git reset --soft``.   
+Ce mode préserve toutes tes modifications dans la staging area (index) et l’espace de travail.   
 Rien ne sera perdu.  
 Si tu veux plus de sécurité, tu peux faire une copie temporaire de ton travail (``git stash``) avant d’exécuter cette commande.
 
@@ -168,7 +169,7 @@ Je commit  et je sync
 
 Comment revenir en arrière ?
 
-## PANIQUE!
+## PANIQUE! 😡
 
 ```powershell
 git reset --soft HEAD~1         
@@ -180,17 +181,23 @@ git commit -m "Remove secrets.ps1 to avoid a nuclear war :-)"
 git push origin main --force    
 ```
 
-Si tu veux aller plus loin il faut 
-* nettoyer tout l’historique public : filter-repo
-* supprime le cache GitHub pour garantir qu’aucune trace ne reste sur leurs serveurs : GitHub/Settings/Actions/Cache/supprime les caches liés au projet.
+### Pour aller plus loin il faut : 
+* Nettoyer tout l’historique public : ``filter-repo``
+* Supprimer le cache GitHub pour garantir qu’aucune trace ne reste sur leurs serveurs 
 
-### filter-repo
+### filter-repo :
 ```powershell 
 # Voir si on veut créer un env virtuel ou pas ????
-# conda install filter-repo -c conda-forge (marche pas trop)
+# conda install filter-repo -c conda-forge 
+#       marche pas trop
+#       trouve rien 
+#       en plus c'est pas à jour
+
 pip install git-filter-repo
 git config --global filter.repo.clean "git filter-repo"
 ```
+
+Ensuite faut faire   
 
 ```powershell 
 cd chemin/vers/ton/depot
@@ -198,24 +205,26 @@ git filter-repo --invert-paths --path ./secrets.ps1
 git push origin main --force
 ```
 
-### Vider caches du repos sur GitHub
-GitHub/Settings/Actions/Cache/supprime les caches liés au projet
+### Vider caches du repos sur GitHub :
+* GitHub/Settings/Actions/Cache/supprime les caches liés au projet
 <!-- 
 https://github.com/40tude/01_github_issues_fixed/actions/caches
 -->
 
-
+## PLUS de PANIQUE...😁
 
 
 # Répertoire de logs
 J'ai un projet qui est synchronisé sur GitHub  
-J'ajoute un répertoire ./log avec des centaines de logs qu'il est ridicule d'avoir sur github. 
+J'ajoute un répertoire ``./log`` avec des centaines de logs qu'il est ridicule d'avoir sur GitHub.   
 J'oublie d'en tenir compte dans ``.gitignore``  
-J'ai fait un commit et un sync
+J'ai fait un commit et une synchro    
 Les fichiers de logs sont petits, tout est parti sur GitHub
-Je commit et je sync
 
-Comment revenir en arrière ?
+Mais comment faire ? Comment revenir en arrière ?
+
+## PANIQUE! 😡
+
 
 Je propose
 
@@ -229,5 +238,8 @@ git commit -m "Remove ./logs and alll the logs files"
 git push origin main --force    
 ```
 
+Bine voir le ``-r`` de la commande ``git rm``
+
+## PLUS de PANIQUE...😁
 
 
