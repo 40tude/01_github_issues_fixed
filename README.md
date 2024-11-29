@@ -132,7 +132,7 @@ Si tu veux plus de sécurité, tu peux faire une copie temporaire de ton travail
 ```powershell
 git stash                       # Optionnel, si tu veux sauvegarder tes modifications locales
 git reset --soft HEAD~1         # Annule le dernier commit
-git rm --cached ./data/large_file_2.csv  # Supprime le fichier du suivi Git
+git rm --cached ./data/large_file_2.csv  # Supprime le fichier du suivi Git. On le voit plus das VSCode Source Control
 echo "/data/large_file_2.csv" >> .gitignore  # Ajoute au .gitignore
 git add .gitignore              # Ajoute le fichier .gitignore
 git add .                       # Ajoute les autres modifications
@@ -140,4 +140,94 @@ git commit -m "Remove large file and update .gitignore"
 git push origin main --force    # Réécrit l'historique
 git stash pop                   # Optionnel, pour restaurer tes modifications
 ```
+On retrouve bien le projet synchro sur GitHub
+
+## PLUS de PANIQUE...😁
+
+## Résumé
+
+```powershell
+git stash                       
+git reset --soft HEAD~1         
+git rm --cached ./data/large_file_2.csv  
+echo "/data/large_file_2.csv" >> .gitignore  
+git add .gitignore              
+git add .                       
+git commit -m "Remove large file and update .gitignore"
+git push origin main --force    
+git stash pop                   
+```
+
+
+# Fichier `secrets.ps1` 
+
+J'ai un projet qui est synchronisé sur GitHub  
+J'ajoute un fichier `secrets.ps1`  
+J'oublie d'en tenir compte dans ``.gitignore``  
+Je commit  et je sync
+
+Comment revenir en arrière ?
+
+## PANIQUE!
+
+```powershell
+git reset --soft HEAD~1         
+git rm --cached ./secrets.ps1   
+Edition de .gitignore   
+git add .gitignore              
+git add .                       
+git commit -m "Remove secrets.ps1 to avoid a nuclear war :-)" 
+git push origin main --force    
+```
+
+Si tu veux aller plus loin il faut 
+* nettoyer tout l’historique public : filter-repo
+* supprime le cache GitHub pour garantir qu’aucune trace ne reste sur leurs serveurs : GitHub/Settings/Actions/Cache/supprime les caches liés au projet.
+
+### filter-repo
+```powershell 
+# Voir si on veut créer un env virtuel ou pas ????
+# conda install filter-repo -c conda-forge (marche pas trop)
+pip install git-filter-repo
+git config --global filter.repo.clean "git filter-repo"
+```
+
+```powershell 
+cd chemin/vers/ton/depot
+git filter-repo --invert-paths --path ./secrets.ps1
+git push origin main --force
+```
+
+### Vider caches du repos sur GitHub
+GitHub/Settings/Actions/Cache/supprime les caches liés au projet
+<!-- 
+https://github.com/40tude/01_github_issues_fixed/actions/caches
+-->
+
+
+
+
+# Répertoire de logs
+J'ai un projet qui est synchronisé sur GitHub  
+J'ajoute un répertoire ./log avec des centaines de logs qu'il est ridicule d'avoir sur github. 
+J'oublie d'en tenir compte dans ``.gitignore``  
+J'ai fait un commit et un sync
+Les fichiers de logs sont petits, tout est parti sur GitHub
+Je commit et je sync
+
+Comment revenir en arrière ?
+
+Je propose
+
+```powershell
+git reset --soft HEAD~1         
+git rm -r --cached ./logs   
+Edition de .gitignore (/logs/)   
+git add .gitignore              
+git add .                       
+git commit -m "Remove ./logs and alll the logs files" 
+git push origin main --force    
+```
+
+
 
