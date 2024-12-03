@@ -1,5 +1,5 @@
 # Intro
-Je veux tester au moins 2 cas qui me mettent toujours en panique
+Je veux tester au moins 2 cas qui me mettent toujours en panique mais bon je sens que ça va se transformer en ``cheat sheet`` cette histoire...
 
 # Gros Fichier - Cas 1
 J'ai un projet qui est synchronisé sur GitHub  
@@ -242,4 +242,68 @@ Bine voir le ``-r`` de la commande ``git rm``
 
 ## PLUS de PANIQUE...😁
 
+
+# Branch & Merge
+
+J'ai un projet avec un repo GitHub  
+J'ai une idée transcendantale...  
+
+## Mode VSCode
+En bas à gauche je clique sur ``main``  
+Je choisis `Create New Branch` (``b1`` par exemple)  
+Je modifie, j'ajoute des fichiers, je teste...  
+Je commit plusieurs fois
+Quand j'ai terminé sur b1
+
+
+
+### Je suis pas content
+Je reviens sur ``main`` en cliquant en bas à gauche  
+Je supprime la branche ``b1``  
+
+
+### Je suis content  
+Je reviens sur ``main`` en cliquant en bas à gauche  
+Je choisis branch/merge/b1  
+
+<p align="center">
+<img src="./assets/img04.png" alt="drawing" width="400"/>
+<p>
+
+Je commit `master`
+Je peux supprimer la branche ``b1``  
+
+
+
+### Si au moment du merge y a un conflit
+
+<p align="center">
+<img src="./assets/img05.png" alt="drawing" width="400"/>
+<p>
+
+Ensuite on fait un commit de ``main``
+
+Voir le graphe en bas à gauche
+
+<p align="center">
+<img src="./assets/img06.png" alt="drawing" width="400"/>
+<p>
+
+
+## Mode CLI
+
+On peut mélanger Mode VSCode et CLI  
+
+
+| Action                          | Commande                                   |
+|---------------------------------|--------------------------------------------|
+| Initialiser un dépôt Git        | `git init`                                 |
+| Ajouter des fichiers            | `git add <file>` `git add .`               |
+| Faire un commit                 | `git commit -m "message"`                  |
+| Créer une branche               | `git checkout -b <branch-name>`            |
+| Basculer entre branches         | `git checkout <branch-name>`               |
+| Fusionner une branche           | `git merge <branch-name>`                  |
+| Résoudre un conflit             | Résoudre le conflit, puis `git add <file>` |
+| Supprimer une branche           | `git branch -d <branch-name>`              |
+| Historique des commits          | `git log --oneline --graph --all`          |
 
