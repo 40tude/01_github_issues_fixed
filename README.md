@@ -440,7 +440,92 @@ git merge upstream/main
 git push origin main
 ```
 
+## Combien de fois par jour ?
+Combien de fois par jour faut il synchroniser avec le main ?  
+**Une à deux fois par jour**  
+1. Synchroniser une fois au **début de la journée** (ou avant de commencer une nouvelle tâche) 
+    * Travailler avec une base de code à jour.
+1. Synchroniser une deuxième fois en **fin de journée** (ou avant de un pull request)
+    * S'assurer que les modifications qu'on soumet sont compatibles avec les changements récents sur main
 
 
 
+
+
+
+
+
+
+
+<!-- ####################################################################### -->
+<!-- ####################################################################### -->
+<!-- ####################################################################### -->
+# Bonnes pratiques pour les merges sur `main` ?
+
+## Politique stricte de merges
+
+### Utiliser des `feature branches`
+- Tout travail doit être fait dans une branche spécifique (ex. : `feature/ticket-123`) 
+- Ne pas être directement poussé sur `main`.
+
+### Passer par des pull requests
+- Les merges dans `main` doivent toujours être effectués via une PR, avec une revue de code par un ou plusieurs membres de l'équipe.
+- Réduit les risques d'erreurs et garantit que le code respecte les standards de qualité.
+
+### Limiter le nombre de merges par jour
+- Regrouper les merges importants
+- Limiter les merges dans `main` à 1 ou 2 moments précis par jour
+    - Exemple : en début ou fin de journée
+- Facilite la synchronisation pour tous les membres de l'équipe, évite un flux chaotique de changements.
+
+### Automatiser la validation avec CI
+- Avant de merger dans `main`
+- Exécuter automatiquement une suite de tests via un outil de CI (comme Jenkins, GitHub Actions, ou GitLab CI/CD).
+- Ca garantit que les modifications ne cassent pas le code existant et que `main` reste toujours stable.
+
+
+
+
+<!-- ####################################################################### -->
+<!-- ####################################################################### -->
+<!-- ####################################################################### -->
+# Workflow idéal
+
+## Chaque membre de l'équipe
+
+### Avant de commencer une nouvelle tâche 
+- Synchroniser avec `main` pour partir d'une base de code propre :
+     ```bash
+     git switch main
+     git fetch upstream
+     git merge upstream/main
+     ```
+
+### Pendant le développement
+- Travailler dans une branche dédiée (ex. : `feature/ticket-123`) et synchroniser cette branche avec `main` régulièrement, surtout si le développement dure plusieurs jours.
+
+
+### Avant de soumettre une PR
+   - Synchroniser avec `main` une dernière fois pour résoudre les éventuels conflits en amont.
+
+
+
+
+## L'équipe
+
+### Planifier les merges dans `main`
+- Si possible, regrouper les merges en une ou deux plages horaires par jour (matin et/ou après-midi).
+- Cela donne à tout le monde le temps de synchroniser et limite les interruptions.
+
+### Communiquer activement
+- Utiliser des outils de communication (Slack, Teams, etc.) pour informer l'équipe de merges importants ou de changements critiques.
+
+### Respecter le processus de PRs
+- Assurez-vous que chaque PR est bien revue et validée avant d’être mergée.
+
+
+## Résumé
+1. **Synchroniser `main` :** Une fois par jour
+1. **Merges sur `main` :** 1 à 2 par jour, après exécution des tests CI, toujours via des PRs
+1. **Workflow collaboratif :** Travailler dans des branches dédiées, synchroniser régulièrement et communiquer sur les merges importants.
 
