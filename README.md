@@ -435,7 +435,8 @@ Si on voit des fichiers sur lesquels on travaille dans ``b1``, alors faut rebase
 # Ajouter le projet original comme remote (une seule fois, si ce n'a pas déjà été fait)
 git remote add upstream <URL-du-projet-original>
 
-# Récupérer les mises à jour du projet original et les mettre dans un "arbre" qui s'appelle ``upstream``. Arbre n'est pas du tout un terme officiel je crois. C'est juste l'idée que je m'en fait.
+# Récupérer les mises à jour du projet original et les mettre dans un "arbre" qui s'appelle ``upstream``
+# Arbre n'est pas du tout un terme officiel je crois. C'est juste l'idée que je m'en fait
 git fetch upstream
 
 # Mettre à jour la branche main locale en applicant les modifications qui sont dans la branche upstream/main
