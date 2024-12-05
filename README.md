@@ -122,7 +122,6 @@ Je commit et je synchronise
 
 Même problème
 
-
 ``git reset --soft HEAD~2``
 
 Cela nous ramène à 2 commits en arrière dans le ``staging area``   
@@ -131,7 +130,6 @@ Cela nous ramène à 2 commits en arrière dans le ``staging area``
 `git rm --cached .\data\large_file.csv`
 
 Le gros fichier n'est plus suivi
-
 
 <p align="center">
 <img src="./assets/img03.png" alt="drawing" width="600"/>
@@ -388,6 +386,7 @@ Il l'accepetent ou demandent des changements (via des commentaires sur GitHub).
 Je fais les changements dans la branche `b1` sur le host puis je commite sur mon fork   
 Les modifs seront automatiquement ajoutées à la PR
 Ensuite quand la PR a été acceptée et fusionnée il faut :
+
 `git remote add upstream <URL-du-projet-original>` (à faire une seule fois)  
 ``git switch main``  
 ``git fetch upstream``  
@@ -412,7 +411,8 @@ Si il y a des conflits, les résoudre
 ``git rebase --continue``
 
 
-Après le rebase, il faut forcer le push de la branche ``b1`` vers le fork (car l’historique a changé)
+Après le rebase, il faut forcer le push de la branche ``b1`` vers le fork (car l’historique a changé)  
+
 ``git push origin b1 --force``
 
 ### Note pour savoir si il faut faire un rebase de ``b1``
@@ -531,6 +531,3 @@ C'est peut être pas cool ou dans l'air du temps, mais ça passe par une politiq
 
 ### Respecter le processus de PRs
 - On ne peut merger qu'une PR qui a été revue et testée
-
-
-
