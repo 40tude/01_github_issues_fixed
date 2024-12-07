@@ -98,6 +98,14 @@ On peut mélanger les clicks dans VSCode et les commandes CLI
 <!-- ####################################################################### -->
 # Gros Fichier - Cas 1
 
+## Note
+Ci-dessous je peux me permettre de faire un ``git reset`` car je suis tout seul   
+Si jamais je suis en équipe il faudra utiliser ``git revert``  
+Dans un cas (``reset``) on modifie ce sur quoi pointe ``HEAD`` alors que dans l'autre (``revert``) on ajoute à la série des commits locaux un nouveau commit qui annule mes bêtises  
+Si d'autres travaillent avec une copie du repo distant 
+* Dans le premier cas ca va être Rock'n Roll au moment des merges (pull ou merge) car on va avoir des HEAD qui vont plus être synchros
+* Dans le second ca va bien se passer (j'ai juste rajouté un commit)
+
 J'ai un projet qui est synchronisé sur GitHub  
 J'ajoute un fichier dont la taille est supérieure à 100 MB  
 J'oublie d'en tenir compte dans ``.gitignore``  
