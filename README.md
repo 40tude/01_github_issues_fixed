@@ -376,10 +376,20 @@ Bien voir le ``-r`` de la commande ``git rm``
 # Pull Request
 
 Aller sur : `https://github.com/firstcontributions/first-contributions`  
-Forker le projet  
+Forker le projet
+* On va avoir une copie du projet dans notre propre repo  
+
+Sur le host local  
+Ouvrir un terminal dans un répertoire où on veut créer le clone  
 Cloner le projet : ``git clone https://github.com/40tude/first-contributions.git``  
+
+## Créer une branche
+``git switch -c b1``  
+
+
+Ensuite...  
+
 Lire : `https://github.com/firstcontributions/first-contributions/blob/main/gui-tool-tutorials/github-windows-vs-code-tutorial.md`  
-Créer une branche ``b1``  
 Faire des modifs proposées (ajouter son nom à ``contributors.md``)
 Sauver  
 Faire un commit de la branche `b1` sur le fork de notre repo  
