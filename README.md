@@ -8,8 +8,6 @@ Je sens que ça va se transformer en ``cheat sheet`` cette histoire...
 
 
 
-
-
 <!-- ####################################################################### -->
 <!-- ####################################################################### -->
 <!-- ####################################################################### -->
@@ -359,6 +357,24 @@ Bien voir le ``-r`` de la commande ``git rm``
 
 
 
+<!-- ####################################################################### -->
+<!-- ####################################################################### -->
+<!-- ####################################################################### -->
+# Tout cassé et plusieurs commit entre temps
+
+Typiquement avec le site 40tude.fr (Jekyll, et thème Just The Docs) je fais des modifs dans le GemFile... et puis à un moment ça déploie plus sur GitHub
+
+## PANIQUE! 😡
+
+```powershell
+git reset --hard dfa46c011b33092ea30c14938616f5281f092811
+git push --force
+```
+
+* Avec le ``--hard`` on supprime les commit ssuivants et les modifications associées 
+* ``--force`` la mise à jour du dépôt distant pour refléter l'état actuel de ta branche locale. Les commits effacés seront également supprimés du dépôt distant.
+
+## PLUS de PANIQUE...😁
 
 
 
